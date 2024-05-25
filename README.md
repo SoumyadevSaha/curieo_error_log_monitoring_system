@@ -47,40 +47,7 @@ The log entry format is as follows: `TIMESTAMP; LOG_TYPE; SEVERITY`. For example
     cd curieo_error_log_monitoring_system
     ```
 
-2. **Create a Dockerfile**
-
-    Create a `Dockerfile` in the root directory of the project and add the following content:
-
-    ```Dockerfile
-    # Use the official Python image from the Docker Hub
-    FROM python:3.9-slim
-
-    # Set the working directory
-    WORKDIR /app
-
-    # Copy the requirements file into the container
-    COPY requirements.txt requirements.txt
-
-    # Install any needed packages specified in requirements.txt
-    RUN pip install --no-cache-dir -r requirements.txt
-
-    # Copy the rest of the working directory contents into the container at /app
-    COPY . .
-
-    # Command to run the Python script
-    CMD ["python", "log_monitor.py"]
-    ```
-
-3. **Create a requirements.txt**
-
-    Create a `requirements.txt` file in the root directory of the project. If your script has any dependencies, list them here. If not, leave it empty.
-
-    ```txt
-    # Example dependencies
-    # numpy==1.21.0
-    ```
-
-4. **Build the Docker Image**
+2. **Build the Docker Image**
 
     In the terminal, navigate to the project directory and build the Docker image:
 
@@ -88,7 +55,7 @@ The log entry format is as follows: `TIMESTAMP; LOG_TYPE; SEVERITY`. For example
     docker build -t error-log-monitor .
     ```
 
-5. **Run the Docker Container**
+3. **Run the Docker Container**
 
     Run the Docker container, mounting the current directory to `/app` in the container:
 
@@ -96,7 +63,7 @@ The log entry format is as follows: `TIMESTAMP; LOG_TYPE; SEVERITY`. For example
     docker run -v $(pwd):/app error-log-monitor
     ```
 
-6. **Provide Input**
+4. **Provide Input**
 
     Ensure your `input.txt` file is in the same directory before running the container. The container reads from `input.txt` and writes the results to `output.txt`.
 
