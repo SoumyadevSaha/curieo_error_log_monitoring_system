@@ -136,6 +136,43 @@ The log entry format is as follows: `TIMESTAMP; LOG_TYPE; SEVERITY`. For example
 - `preprocess_input(commands)`: Preprocesses the input to extract unique timestamps and log types.
 - `main(input_file='input.txt', output_file='output.txt')`: Main function to read input, process commands, and write output.
 
+## Time Complexity Analysis
+
+### 1. Inserting a Log Entry
+When inserting a log entry, the program performs the following steps:
+1. Updates the global segment tree.
+2. Updates the segment tree for the specific log type.
+
+Each update operation involves modifying the segment tree, which has a time complexity of \(O(log N)\), where \(N\) is the number of unique timestamps.
+
+#### Time Complexity for Insertion:
+- **Global Segment Tree Update:** \(O(log N)\)
+- **Log Type Segment Tree Update:** \(O(log N)\)
+
+Therefore, the total time complexity for inserting a log entry is:
+\[ O(log N) + O(log N) = O(log N) \]
+
+### 2. Querying the Data
+Query operations involve retrieving data from the segment tree over a specified range. The queries performed in your program are:
+1. Query for the min, max, and mean severity for a specific log type.
+2. Query for the min, max, and mean severity before or after a specified timestamp.
+3. Query for the min, max, and mean severity before or after a specified timestamp for a specific log type.
+
+Each query operation involves querying the segment tree, which has a time complexity of \(O(log N)\).
+
+#### Time Complexity for Querying:
+- Querying the global segment tree: \(O(log N)\)
+- Querying the segment tree for a specific log type: \(O(log N)\)
+
+Therefore, the total time complexity for each query operation is:
+\[ O(log N) \]
+
+### Summary
+- **Insertion Time Complexity:** \(O(log N)\)
+- **Query Time Complexity:** \(O(log N)\)
+
+These time complexities arise because both insertion and querying operations on a segment tree involve traversing the tree's height, which is logarithmic in relation to the number of elements (unique timestamps in this case).
+
 ## Conclusion
 
 This project demonstrates the use of segment trees to efficiently manage and query log entries based on timestamp and log type. The solution is dockerized to ensure portability and ease of deployment across different environments.
