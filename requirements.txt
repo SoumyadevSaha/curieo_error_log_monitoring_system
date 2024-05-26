@@ -1,2 +1,2 @@
-# Example dependencies
+# Example dependencies [none for this case]
 # numpy==1.21.0
